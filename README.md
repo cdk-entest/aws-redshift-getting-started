@@ -117,6 +117,42 @@ const cluster = new aws_redshift.CfnCluster(this, "RedshiftCluster", {
 cluster.addDependsOn(subnetGroup);
 ```
 
+## Serverless Stack
+
+similarly, first we need to create role and security as for the cluster group, then create a namspace
+
+```ts
+const namespace = new aws_redshiftserverless.CfnNamespace(
+  this,
+  "RedshiftNameSpace",
+  {
+    namespaceName: "haimtrandemo",
+    adminUsername: "admin",
+    adminUserPassword: "Agribank#865525",
+    dbName: "demo",
+    defaultIamRoleArn: role.roleArn,
+    iamRoles: [role.roleArn],
+  }
+);
+```
+
+create a workgroup
+
+```ts
+const workgroup = new aws_redshiftserverless.CfnWorkgroup(
+  this,
+  "RedshiftWorkGroup",
+  {
+    workgroupName: "haimtrandemo",
+    baseCapacity: 32,
+    namespaceName: "haimtrandemo",
+    subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
+    publiclyAccessible: true,
+    securityGroupIds: [sg.securityGroupId],
+  }
+);
+```
+
 ## Connection
 
 Either using notebook sql or normal query editor, we need to create a connection first.
