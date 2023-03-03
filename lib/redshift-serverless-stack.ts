@@ -48,9 +48,9 @@ export class RedshiftServerlessStack extends Stack {
       this,
       "RedshiftNameSpace",
       {
-        namespaceName: "haimtrandemo",
+        namespaceName: "demo",
         adminUsername: "admin",
-        adminUserPassword: "Agribank#865525",
+        adminUserPassword: "Admin#2023",
         dbName: "demo",
         defaultIamRoleArn: role.roleArn,
         iamRoles: [role.roleArn],
@@ -61,9 +61,9 @@ export class RedshiftServerlessStack extends Stack {
       this,
       "RedshiftWorkGroup",
       {
-        workgroupName: "haimtrandemo",
+        workgroupName: "demo",
         baseCapacity: 32,
-        namespaceName: "haimtrandemo",
+        namespaceName: "demo",
         subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
         publiclyAccessible: true,
         securityGroupIds: [sg.securityGroupId],

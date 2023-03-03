@@ -57,7 +57,7 @@ export class RedshiftCluster extends Stack {
       clusterType: "multi-node",
       dbName: "demo",
       masterUsername: "demo",
-      masterUserPassword: "Agribank#865525",
+      masterUserPassword: "Admin#2023",
       nodeType: "dc2.large",
       numberOfNodes: 2,
       port: 5439,

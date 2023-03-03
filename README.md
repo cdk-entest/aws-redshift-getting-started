@@ -126,9 +126,9 @@ const namespace = new aws_redshiftserverless.CfnNamespace(
   this,
   "RedshiftNameSpace",
   {
-    namespaceName: "haimtrandemo",
+    namespaceName: "demo",
     adminUsername: "admin",
-    adminUserPassword: "Agribank#865525",
+    adminUserPassword: "Admin#2023",
     dbName: "demo",
     defaultIamRoleArn: role.roleArn,
     iamRoles: [role.roleArn],
@@ -143,9 +143,9 @@ const workgroup = new aws_redshiftserverless.CfnWorkgroup(
   this,
   "RedshiftWorkGroup",
   {
-    workgroupName: "haimtrandemo",
+    workgroupName: "demo",
     baseCapacity: 32,
-    namespaceName: "haimtrandemo",
+    namespaceName: "demo",
     subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
     publiclyAccessible: true,
     securityGroupIds: [sg.securityGroupId],
