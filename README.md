@@ -178,11 +178,23 @@ iam_role default
 region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
 ```
 
-## Python Connector 
+## Python Connector
 
-create a connector and send quries, please check the port 5439 and security group 
+create a virtual env
 
-```py 
+```bash
+python3 -m venv .env
+```
+
+activate and install dependencies
+
+```bash
+source .env/bin/activate
+```
+
+create a connector and send quries, please check the port 5439 and security group
+
+```py
 import redshift_connector
 import json
 
@@ -191,9 +203,9 @@ with open("./config.json", "r") as file:
     # print(config)
 
 conn = redshift_connector.connect(
-    host=config['host'], 
-    port=config['port'], 
-    user=config['user'], 
+    host=config['host'],
+    port=config['port'],
+    user=config['user'],
     password=config['password']
 )
 
