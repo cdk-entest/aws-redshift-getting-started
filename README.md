@@ -177,3 +177,7 @@ COPY region FROM 's3://redshift-immersionday-labs/data/region/region.tbl.lzo'
 iam_role default
 region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
 ```
+
+## Python Connector 
+
+
