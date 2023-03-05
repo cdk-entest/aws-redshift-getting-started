@@ -11,6 +11,8 @@ date: 01/03/2022
 - create a Redshift cluster
 - create a connection
 - run some quries from a notebook
+- experiment with gelt_data
+- experiment with sql notebook and redshift ml
 
 ## Network Stack
 
@@ -213,4 +215,119 @@ cusor = conn.cursor()
 cusor.execute("select * from region")
 result: tuple = cusor.fetchall()
 print(result)
+```
+
+## Explore Gelt_data
+
+create a table
+
+```sql
+DROP TABLE IF EXISTS gdelt_data CASCADE;
+
+CREATE TABLE gdelt_data (
+GlobalEventId   bigint,
+SqlDate  bigint,
+MonthYear bigint,
+Year   bigint,
+FractionDate double precision,
+Actor1Code varchar(256),
+Actor1Name varchar(256),
+Actor1CountryCode varchar(256),
+Actor1KnownGroupCode varchar(256),
+Actor1EthnicCode varchar(256),
+Actor1Religion1Code varchar(256),
+Actor1Religion2Code varchar(256),
+Actor1Type1Code varchar(256),
+Actor1Type2Code varchar(256),
+Actor1Type3Code varchar(256),
+Actor2Code varchar(256),
+Actor2Name varchar(256),
+Actor2CountryCode varchar(256),
+Actor2KnownGroupCode varchar(256),
+Actor2EthnicCode varchar(256),
+Actor2Religion1Code  varchar(256),hai_table
+Actor2Religion2Code varchar(256),
+Actor2Type1Code varchar(256),
+Actor2Type2Code varchar(256),
+Actor2Type3Code varchar(256),
+IsRootEvent bigint,
+EventCode bigint,
+EventBaseCode bigint,
+EventRootCode bigint,
+QuadClass bigint,
+GoldsteinScale double precision,
+NumMentions bigint,
+NumSources bigint,
+NumArticles bigint,
+AvgTone double precision,
+Actor1Geo_Type bigint,
+Actor1Geo_FullName varchar(256),
+Actor1Geo_CountryCode varchar(256),
+Actor1Geo_ADM1Code varchar(256),
+Actor1Geo_Lat double precision,
+Actor1Geo_Long double precision,
+Actor1Geo_FeatureID bigint,
+Actor2Geo_Type bigint,
+Actor2Geo_FullName varchar(256),
+Actor2Geo_CountryCode varchar(256),
+Actor2Geo_ADM1Code varchar(256),
+Actor2Geo_Lat double precision,
+Actor2Geo_Long double precision,
+Actor2Geo_FeatureID bigint,
+ActionGeo_Type bigint,
+ActionGeo_FullName varchar(256),
+ActionGeo_CountryCode varchar(256),
+ActionGeo_ADM1Code varchar(256),
+ActionGeo_Lat double precision,
+ActionGeo_Long double precision,
+ActionGeo_FeatureID bigint,
+DATEADDED bigint
+) ;
+```
+
+download the data from s3 into the table
+
+```sql
+COPY gdelt_data from 's3://gdelt-open-data/events/1979.csv'
+region 'us-east-1' iam_role default csv delimiter '\t';
+```
+
+select columns for training a model
+
+```sql
+select AvgTone, EventCode, NumArticles, Actor1Geo_Lat, Actor1Geo_Long, Actor2Geo_Lat, Actor2Geo_Long from gdelt_data
+```
+
+create a K-mean model, later on can be called as a function news_monitoring_cluster in redshift. The model name is news_data_cluster
+
+```sql
+CREATE MODEL news_data_clusters
+FROM (select AvgTone, EventCode, NumArticles, Actor1Geo_Lat, Actor1Geo_Long, Actor2Geo_Lat, Actor2Geo_Long
+from gdelt_data)
+FUNCTION  news_monitoring_cluster
+IAM_ROLE default
+AUTO OFF
+MODEL_TYPE KMEANS
+PREPROCESSORS 'none'
+HYPERPARAMETERS DEFAULT EXCEPT (K '7')
+SETTINGS (S3_BUCKET 'bucket-name-same-region-only');
+```
+
+redishift launch a sagemaker training job, and we can check the status of the model
+
+```sql
+SHOW MODEL NEWS_DATA_CLUSTERS;
+```
+
+use the model to identify the clusters associated with each GlobalEventId
+
+```sql
+select globaleventid, news_monitoring_cluster ( AvgTone, EventCode, NumArticles, Actor1Geo_Lat, Actor1Geo_Long, Actor2Geo_Lat, Actor2Geo_Long ) as cluster
+from gdelt_data;
+```
+
+the function below will return the cluster number (k-mean)
+
+```sql
+news_monitoring_cluster ( AvgTone, EventCode, NumArticles, Actor1Geo_Lat, Actor1Geo_Long, Actor2Geo_Lat, Actor2Geo_Long )
 ```
