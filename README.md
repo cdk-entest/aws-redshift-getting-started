@@ -217,7 +217,7 @@ result: tuple = cusor.fetchall()
 print(result)
 ```
 
-## Explore Gelt_data
+## Explore Gdelt_data
 
 create a table
 
