@@ -494,7 +494,6 @@ select count(*) from orders;
 
 
 ## Reference 
-- [Redshift workshop load data](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2)
+- [Redshift Workshop Load Data](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2)
 
-- 
-
+- [Redsfhit Deep Dive Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/380e0b8a-5d4c-46e3-95a8-82d68cf5789a/en-US)
