@@ -245,7 +245,7 @@ Actor2Name varchar(256),
 Actor2CountryCode varchar(256),
 Actor2KnownGroupCode varchar(256),
 Actor2EthnicCode varchar(256),
-Actor2Religion1Code  varchar(256),hai_table
+Actor2Religion1Code  varchar(256),
 Actor2Religion2Code varchar(256),
 Actor2Type1Code varchar(256),
 Actor2Type2Code varchar(256),
