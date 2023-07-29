@@ -265,7 +265,27 @@ FROM big_sales_sorted
 WHERE saletime between '2008-08-01 00:00:00'::TIMESTAMP AND '2008-08-01 23:59:59'::TIMESTAMP
 ```
 
-The performance improvement is because the sorted_big_sale table has been sorted by the saletime column.
+The performance improvement is because the sorted_big_sale table has been sorted by the saletime column. We can define sort key when creating a new table
+
+```sql
+create table sales(
+	salesid integer not null,
+	listid integer not null distkey,
+	sellerid integer not null,
+	buyerid integer not null,
+	eventid integer not null,
+	dateid smallint not null sortkey,
+	qtysold smallint not null,
+	pricepaid decimal(8,2),
+	commission decimal(8,2),
+	saletime timestamp);
+```
+
+We can also alter an existing table
+
+```sql
+alter table sales alter sortkey (saletime);
+```
 
 ## Reference
 
