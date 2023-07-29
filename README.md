@@ -332,12 +332,29 @@ the function below will return the cluster number (k-mean)
 news_monitoring_cluster ( AvgTone, EventCode, NumArticles, Actor1Geo_Lat, Actor1Geo_Long, Actor2Geo_Lat, Actor2Geo_Long )
 ```
 
+## Load Data from S3
 
-## Load Data from S3 
+About data size
+
+```json
+REGION (5 rows) - 2s
+CUSTOMER (15M rows) – 2m
+ORDERS - (76M rows) - 10s
+PART - (20M rows) - 2m
+SUPPLIER - (1M rows) - 10s
+LINEITEM - (303M rows) - 22s
+PARTSUPPLIER - (80M rows) - 15s
+```
+
+Let check the size of the data
+
+```bash
+aws s3 ls --summarize --human-readable --recursive s3://redshift-immersionday-labs/data/
+```
 
 [workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2)
 
-```sql 
+```sql
 DROP TABLE IF EXISTS partsupp;
 DROP TABLE IF EXISTS lineitem;
 DROP TABLE IF EXISTS supplier;
@@ -435,9 +452,9 @@ create table partsupp (
 diststyle even;
 ```
 
-then COPY data from S3 
+then COPY data from S3
 
-```sql 
+```sql
 COPY region FROM 's3://redshift-immersionday-labs/data/region/region.tbl.lzo'
 iam_role default
 region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
@@ -467,21 +484,9 @@ iam_role default
 region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
 ```
 
-About data size 
+Data validation
 
-```json 
-REGION (5 rows) - 2s
-CUSTOMER (15M rows) – 2m
-ORDERS - (76M rows) - 10s
-PART - (20M rows) - 2m
-SUPPLIER - (1M rows) - 10s
-LINEITEM - (303M rows) - 22s
-PARTSUPPLIER - (80M rows) - 15s
-```
-
-Data validation 
-
-```sql 
+```sql
  --Number of rows= 5
 select count(*) from region;
 
@@ -492,11 +497,49 @@ select count(*) from nation;
 select count(*) from orders;
 ```
 
+Find top 10 cutomers by joining customer table with orders table
 
-## Reference 
+```sql
+select c_name, sum(o_totalprice) as total_purchase from (
+  select c_name, o_totalprice from customer, orders
+  where customer.c_custkey = orders.o_custkey
+) group by c_name order by total_purchase desc limit 10
+```
+
+## COPY Command
+
+COMPUPDATE PRESET
+
+> When COMPUPDATE is PRESET, the COPY command chooses the compression encoding for each column if the target table is empty; even if the columns already have encodings other than RAW.
+
+COMPUPDATE omitted
+
+> When COMPUPDATE is omitted, the COPY command chooses the compression encoding for each column only if the target table is empty and you have not specified an encoding (other than RAW) for any of the columns.
+
+COMPUPATE ON
+
+> When COMPUPDATE is ON (or TRUE), or COMPUPDATE is specified without an option, the COPY command applies automatic compression if the table is empty; even if the table columns already have encodings other than RAW.
+
+COMPUDATE OFF
+
+> When COMPUPDATE is OFF (or FALSE), automatic compression is disabled. Column encodings aren't changed.
+
+## Reference
+
 - [Redshift Workshop Load Data](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2)
 
 - [Redsfhit Deep Dive Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/380e0b8a-5d4c-46e3-95a8-82d68cf5789a/en-US)
 
 - [Redshift ML K-mean](https://aws.amazon.com/blogs/big-data/use-unsupervised-training-with-k-means-clustering-in-amazon-redshift-ml/)
 
+- [Redshift Managment Guide](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+
+- [wlm json setup in cdk](https://github.com/hashicorp/terraform-provider-aws/issues/7865)
+
+- [default database user permissions](https://docs.aws.amazon.com/redshift/latest/dg/r_Privileges.html)
+
+- [amazon redsfhit default dev database](https://stackoverflow.com/questions/76120205/what-is-the-dev-database-in-redshift-for-and-why-cant-i-drop-it)
+
+- [reboot after modifying parameter group](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+
+- [COPY command with COMUPDATE](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-data-load.html)

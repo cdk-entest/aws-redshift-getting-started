@@ -13,7 +13,7 @@ export class NetworkStack extends Stack {
 
     this.vpc = new aws_ec2.Vpc(this, "VpcRedshift", {
       vpcName: "VpcRedshift",
-      cidr: "10.0.0.0/16",
+      cidr: "192.168.0.0/16",
       maxAzs: 3,
       enableDnsSupport: true,
       enableDnsHostnames: true,
@@ -21,16 +21,6 @@ export class NetworkStack extends Stack {
         {
           cidrMask: 24,
           name: "PublicSubnet1",
-          subnetType: aws_ec2.SubnetType.PUBLIC,
-        },
-        {
-          cidrMask: 24,
-          name: "PublicSubnet2",
-          subnetType: aws_ec2.SubnetType.PUBLIC,
-        },
-        {
-          cidrMask: 24,
-          name: "PublicSubnet3",
           subnetType: aws_ec2.SubnetType.PUBLIC,
         },
       ],

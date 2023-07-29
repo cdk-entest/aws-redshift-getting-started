@@ -1,36 +1,65 @@
 import { aws_ec2, aws_iam, aws_redshift, Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
 
+const wlm = [
+  {
+    auto_wlm: true,
+    user_group: ["data_engineers"],
+    query_group: ["load", "transform"],
+    queue_type: "auto",
+    name: "ETL",
+    rules: [
+      {
+        rule_name: "Rule_0",
+        action: "abort",
+        predicate: [
+          {
+            metric_name: "return_row_count",
+            operator: ">",
+            value: 1000,
+          },
+        ],
+      },
+    ],
+    concurrency_scaling: "off",
+    priority: "normal",
+  },
+  {
+    auto_wlm: true,
+    user_group: [],
+    query_group: [],
+    name: "Default queue",
+  },
+  {
+    short_query_queue: true,
+  },
+];
+
 interface RedshiftClusterProps extends StackProps {
   vpc: aws_ec2.Vpc;
   sg: aws_ec2.SecurityGroup;
+  version: string;
 }
 
 export class RedshiftCluster extends Stack {
   constructor(scope: Construct, id: string, props: RedshiftClusterProps) {
     super(scope, id, props);
 
-    //    const sg = new aws_ec2.SecurityGroup(
-    //      this,
-    //      "SecurityGroupForRedshiftCluster",
-    //      {
-    //        securityGroupName: "SecurityGroupForRedshiftCluster",
-    //        vpc: props.vpc,
-    //      }
-    //    );
-    //
-    //    sg.addIngressRule(aws_ec2.Peer.anyIpv4(), aws_ec2.Port.tcp(5439));
+    // associate role for data analyst
+    const daRole = new aws_iam.Role(
+      this,
+      "RedshiftAssociateIAMRoleForDataAnalyst",
+      {
+        roleName: "RedshiftAssociateIAMRoleForDataAnalyst",
+        assumedBy: new aws_iam.CompositePrincipal(
+          new aws_iam.ServicePrincipal("redshift.amazonaws.com"),
+          new aws_iam.ServicePrincipal("sagemaker.amazonaws.com"),
+          new aws_iam.ServicePrincipal("redshift-serverless.amazonaws.com")
+        ),
+      }
+    );
 
-    const role = new aws_iam.Role(this, "IamRoleForRedshiftCluster", {
-      roleName: "IamRoleForRedshiftCluster",
-      assumedBy: new aws_iam.CompositePrincipal(
-        new aws_iam.ServicePrincipal("redshift.amazonaws.com"),
-        new aws_iam.ServicePrincipal("sagemaker.amazonaws.com"),
-        new aws_iam.ServicePrincipal("redshift-serverless.amazonaws.com")
-      ),
-    });
-
-    role.addToPolicy(
+    daRole.addToPolicy(
       new aws_iam.PolicyStatement({
         effect: aws_iam.Effect.ALLOW,
         resources: ["*"],
@@ -38,12 +67,41 @@ export class RedshiftCluster extends Stack {
       })
     );
 
-    role.addManagedPolicy(
+    daRole.addManagedPolicy(
       aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
         "AmazonRedshiftAllCommandsFullAccess"
       )
     );
 
+    // associate role for data engineer
+    const deRole = new aws_iam.Role(
+      this,
+      "RedshiftAssociateIAMRoleForDataEngineer",
+      {
+        roleName: "RedshiftAssociateIAMRoleForDataEngineer",
+        assumedBy: new aws_iam.CompositePrincipal(
+          new aws_iam.ServicePrincipal("redshift.amazonaws.com"),
+          new aws_iam.ServicePrincipal("sagemaker.amazonaws.com"),
+          new aws_iam.ServicePrincipal("redshift-serverless.amazonaws.com")
+        ),
+      }
+    );
+
+    deRole.addToPolicy(
+      new aws_iam.PolicyStatement({
+        effect: aws_iam.Effect.ALLOW,
+        resources: ["*"],
+        actions: ["s3:*"],
+      })
+    );
+
+    deRole.addManagedPolicy(
+      aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
+        "AmazonRedshiftAllCommandsFullAccess"
+      )
+    );
+
+    // subnet group
     const subnetGroup = new aws_redshift.CfnClusterSubnetGroup(
       this,
       "SubnetGroupForRedshiftCluster",
@@ -53,21 +111,60 @@ export class RedshiftCluster extends Stack {
       }
     );
 
+    // parameter group
+    const parameterGroup = new aws_redshift.CfnClusterParameterGroup(
+      this,
+      "ParameterGroupDemo",
+      {
+        description: "demo",
+        // currently only redshift-1.0 version
+        parameterGroupFamily: props.version,
+        parameterGroupName: "ParameterGroupDemo",
+        parameters: [
+          {
+            parameterName: "statement_timeout",
+            // 0 means turn-off limitation
+            parameterValue: "0",
+          },
+          {
+            parameterName: "max_concurrency_scaling_clusters",
+            // 0 means turn-off limitation
+            parameterValue: "10",
+          },
+          {
+            parameterName: "wlm_json_configuration",
+            parameterValue: JSON.stringify(wlm),
+          },
+        ],
+        tags: [
+          {
+            key: "name",
+            value: "demo",
+          },
+        ],
+      }
+    );
+
+    // redshift cluster
     const cluster = new aws_redshift.CfnCluster(this, "RedshiftCluster", {
       clusterType: "multi-node",
       dbName: "demo",
       masterUsername: "demo",
-      masterUserPassword: "Admin#2023",
+      masterUserPassword: "Admin2023",
       nodeType: "dc2.large",
       numberOfNodes: 2,
       port: 5439,
       publiclyAccessible: true,
-      iamRoles: [role.roleArn],
+      iamRoles: [deRole.roleArn, daRole.roleArn],
       availabilityZone: props.vpc.availabilityZones[0],
       clusterSubnetGroupName: subnetGroup.ref,
       vpcSecurityGroupIds: [props.sg.securityGroupId],
+      clusterParameterGroupName: parameterGroup.parameterGroupName,
+      snapshotCopyRetentionPeriod: 1,
+      manualSnapshotRetentionPeriod: 1,
     });
 
-    cluster.addDependsOn(subnetGroup);
+    cluster.addDependency(subnetGroup);
+    cluster.addDependency(parameterGroup);
   }
 }

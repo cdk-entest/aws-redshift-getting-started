@@ -4,11 +4,13 @@ import { NetworkStack } from "../lib/network-stack";
 import { RedshiftCluster } from "../lib/redshift-cluster-stack";
 import { RedshiftServerlessStack } from "../lib/redshift-serverless-stack";
 
+const REGION = "ap-southeast-1";
+
 const app = new cdk.App();
 
 const network = new NetworkStack(app, "NetworkStack", {
   env: {
-    region: "us-east-1",
+    region: REGION,
     account: process.env.CDK_DEFAULT_ACCOUNT,
   },
 });
@@ -16,18 +18,19 @@ const network = new NetworkStack(app, "NetworkStack", {
 new RedshiftServerlessStack(app, "RedshiftServerlessStack", {
   vpc: network.vpc,
   env: {
-    region: "us-east-1",
+    region: REGION,
     account: process.env.CDK_DEFAULT_ACCOUNT,
   },
 });
 
 const cluster = new RedshiftCluster(app, "RedshiftCluster", {
   vpc: network.vpc,
-  sg: network.sg, 
+  sg: network.sg,
+  version: "redshift-1.0",
   env: {
-    region: "us-east-1",
+    region: REGION,
     account: process.env.CDK_DEFAULT_ACCOUNT,
   },
 });
 
-cluster.addDependency(network)
+cluster.addDependency(network);
