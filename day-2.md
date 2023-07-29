@@ -93,6 +93,14 @@ Quoted from [Compression encodings](https://docs.aws.amazon.com/redshift/latest/
 - Columns that are defined as SMALLINT, INTEGER, BIGINT, DECIMAL, DATE, TIMESTAMP, or TIMESTAMPTZ data types are assigned AZ64 compression.
 - Columns that are defined as CHAR or VARCHAR data types are assigned LZO compression.
 
+## Join
+
+Let join two tables [redshift join example](https://docs.aws.amazon.com/redshift/latest/dg/r_Join_examples.html) and check the [join syntax here](https://docs.aws.amazon.com/redshift/latest/dg/r_FROM_clause30.html#r_FROM_clause30-parameters)
+
+```sql
+
+```
+
 ## Data Distribution
 
 - KEY, ALL, EVEN, AUTO
@@ -313,7 +321,11 @@ order by query,step;
 
 ## Reference
 
-- [Compression encodings](https://docs.aws.amazon.com/redshift/latest/dg/c_Compression_encodings.html)
+- [redshift join example](https://docs.aws.amazon.com/redshift/latest/dg/r_Join_examples.html)
+
+- [redshift join syntax](https://docs.aws.amazon.com/redshift/latest/dg/r_FROM_clause30.html#r_FROM_clause30-parameters)
+
+- [compression encodings](https://docs.aws.amazon.com/redshift/latest/dg/c_Compression_encodings.html)
 
 - [svl_query_summary](https://docs.aws.amazon.com/redshift/latest/dg/r_SVCS_S3QUERY_SUMMARY.html)
 
