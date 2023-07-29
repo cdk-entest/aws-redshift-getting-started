@@ -287,6 +287,10 @@ We can also alter an existing table
 alter table sales alter sortkey (saletime);
 ```
 
+## Workload Management
+
+## Concurrency Scaling
+
 ## Reference
 
 - [redshift join example](https://docs.aws.amazon.com/redshift/latest/dg/r_Join_examples.html)
