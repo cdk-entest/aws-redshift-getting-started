@@ -482,6 +482,10 @@ region 'us-west-2' gzip delimiter '|' COMPUPDATE PRESET;
 copy partsupp from 's3://redshift-immersionday-labs/data/partsupp/partsupp.tbl.'
 iam_role default
 region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
+
+COPY nation FROM 's3://redshift-immersionday-labs/data/nation/nation.tbl.'
+iam_role default
+region 'us-west-2' lzop delimiter '|' COMPUPDATE PRESET;
 ```
 
 Data validation
@@ -543,3 +547,7 @@ COMPUDATE OFF
 - [reboot after modifying parameter group](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
 
 - [COPY command with COMUPDATE](https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-data-load.html)
+
+- [TPCDS Cloud DWB](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/CloudDataWarehouseBenchmark/Cloud-DWB-Derived-from-TPCDS)
+
+- [redshift concurrency scaling](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)

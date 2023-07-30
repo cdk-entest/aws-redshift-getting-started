@@ -197,6 +197,15 @@ select count(*) from nation;
 select count(*) from orders;
 ```
 
+Find top 10 cutomers by joining customer table with orders table
+
+```sql
+select c_name, sum(o_totalprice) as total_purchase from (
+  select c_name, o_totalprice from customer, orders
+  where customer.c_custkey = orders.o_custkey
+) group by c_name order by total_purchase desc limit 10
+```
+
 ## Sample Dataset
 
 - Amazon reivew dataset
@@ -218,3 +227,7 @@ select count(*) from orders;
 - [redshift quota and limit](https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html)
 
 - [parameter group default value](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html)
+
+- [TPCDS Cloud DWB](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/CloudDataWarehouseBenchmark/Cloud-DWB-Derived-from-TPCDS)
+
+- [redshift concurrency scaling](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)

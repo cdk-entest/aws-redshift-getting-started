@@ -17,13 +17,7 @@ date: 28/07/2023
 
 ## COPY Data
 
-Let load data into redshift from s3 using copy command. We also can check data size in S3
-
-```bash
-aws s3 ls --summarize --human-readable --recursive 's3://packt-redshift-cookbook/lineitem/'
-```
-
-Here is summary of data and load time when using a redshift cluster with to dc.2 nodes.
+Let load data into redshift from s3 using copy command. Here is summary of data and load time when using a redshift cluster with to dc.2 nodes.
 
 ```json
 [
@@ -73,7 +67,7 @@ Here is summary of data and load time when using a redshift cluster with to dc.2
 Let check the size of the data
 
 ```bash
-aws s3 ls --summarize --human-readable --recursive s3://redshift-immersionday-labs/data/
+aws s3 ls --summarize --human-readable --recursive s3://redshift-immersionday-labs/data/lineitem-part/
 ```
 
 [workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2)

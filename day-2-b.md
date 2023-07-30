@@ -104,41 +104,33 @@ create table sales(
 COPY data
 
 ```sql
-copy users from 's3://<myBucket>/tickit/allusers_pipe.txt'
+copy users from 's3://cdk-entest-videos/tickit/allusers_pipe.txt'
 iam_role default
-delimiter '|' region '<aws-region>';
+delimiter '|' region 'us-east-1';
 
-copy users from 's3://<myBucket>/tickit/allusers_pipe.txt'
+copy venue from 's3://cdk-entest-videos/tickit/venue_pipe.txt'
 iam_role default
-delimiter '|' region '<aws-region>';
+delimiter '|' region 'us-east-1';
 
-copy users from 's3://<myBucket>/tickit/allusers_pipe.txt'
+copy category from 's3://cdk-entest-videos/tickit/category_pipe.txt'
 iam_role default
-delimiter '|' region '<aws-region>';
+delimiter '|' region 'us-east-1';
 
-copy venue from 's3://<myBucket>/tickit/venue_pipe.txt'
+copy date from 's3://cdk-entest-videos/tickit/date2008_pipe.txt'
 iam_role default
-delimiter '|' region '<aws-region>';
+delimiter '|' region 'us-east-1';
 
-copy category from 's3://<myBucket>/tickit/category_pipe.txt'
+copy event from 's3://cdk-entest-videos/tickit/allevents_pipe.txt'
 iam_role default
-delimiter '|' region '<aws-region>';
+delimiter '|' timeformat 'YYYY-MM-DD HH:MI:SS' region 'us-east-1';
 
-copy date from 's3://<myBucket>/tickit/date2008_pipe.txt'
+copy listing from 's3://cdk-entest-videos/tickit/listings_pipe.txt'
 iam_role default
-delimiter '|' region '<aws-region>';
+delimiter '|' region 'us-east-1';
 
-copy event from 's3://<myBucket>/tickit/allevents_pipe.txt'
+copy sales from 's3://cdk-entest-videos/tickit/sales_tab.txt'
 iam_role default
-delimiter '|' timeformat 'YYYY-MM-DD HH:MI:SS' region '<aws-region>';
-
-copy listing from 's3://<myBucket>/tickit/listings_pipe.txt'
-iam_role default
-delimiter '|' region '<aws-region>';
-
-copy sales from 's3://<myBucket>/tickit/sales_tab.txt'
-iam_role default
-delimiter '\t' timeformat 'MM/DD/YYYY HH:MI:SS' region '<aws-region>';
+delimiter '\t' timeformat 'MM/DD/YYYY HH:MI:SS' region 'us-east-1';
 ```
 
 ## Data Distribution
