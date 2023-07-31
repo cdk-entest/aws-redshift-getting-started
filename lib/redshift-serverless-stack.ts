@@ -37,12 +37,21 @@ export class RedshiftServerlessStack extends Stack {
       )
     );
 
-    const sg = new aws_ec2.SecurityGroup(this, "SecurityGroupForRedshift", {
-      securityGroupName: "SecurityGroupForRedshift",
-      vpc: props.vpc,
-    });
+    role.addManagedPolicy(
+      aws_iam.ManagedPolicy.fromAwsManagedPolicyName("CloudWatchLogsFullAccess")
+    );
 
-    sg.addIngressRule(aws_ec2.Peer.anyIpv4(), aws_ec2.Port.tcp(5439));
+    const sg = new aws_ec2.SecurityGroup(
+      this,
+      "SecurityGroupForRedshiftServerless",
+      {
+        securityGroupName: "SecurityGroupForRedshiftServerless",
+        vpc: props.vpc,
+      }
+    );
+
+    // security block this
+    // sg.addIngressRule(aws_ec2.Peer.anyIpv4(), aws_ec2.Port.tcp(5439));
 
     const namespace = new aws_redshiftserverless.CfnNamespace(
       this,
@@ -50,10 +59,11 @@ export class RedshiftServerlessStack extends Stack {
       {
         namespaceName: "demo",
         adminUsername: "admin",
-        adminUserPassword: "Admin#2023",
+        adminUserPassword: "Admin2023",
         dbName: "demo",
         defaultIamRoleArn: role.roleArn,
         iamRoles: [role.roleArn],
+        logExports: ["userlog", "connectionlog", "useractivitylog"],
       }
     );
 
@@ -65,11 +75,11 @@ export class RedshiftServerlessStack extends Stack {
         baseCapacity: 32,
         namespaceName: "demo",
         subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
-        publiclyAccessible: true,
+        publiclyAccessible: false,
         securityGroupIds: [sg.securityGroupId],
       }
     );
 
-    workgroup.addDependsOn(namespace);
+    workgroup.addDependency(namespace);
   }
 }

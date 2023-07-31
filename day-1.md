@@ -435,6 +435,67 @@ WHERE
     AND s.schemaname = 'tpch'
 ```
 
+## Redshift Serverless
+
+- namespace
+- workgroup
+- [charged_seconds and compute_seconds](https://stackoverflow.com/questions/75182290/redshift-serverless-charged-seconds-and-compute-seconds)
+- [billing for redshift serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+To use Redshift serverless, we need to create a namespace and a workgroup. A namespace is to manage username, database, roles, logs, and a workgroup is to manage capacity, security group.
+
+Let create a namespace in CDK
+
+```ts
+const namespace = new aws_redshiftserverless.CfnNamespace(
+  this,
+  "RedshiftNameSpace",
+  {
+    namespaceName: "demo",
+    adminUsername: "admin",
+    adminUserPassword: "Admin2023",
+    dbName: "demo",
+    defaultIamRoleArn: role.roleArn,
+    iamRoles: [role.roleArn],
+    logExports: ["userlog", "connectionlog", "useractivitylog"],
+  }
+);
+```
+
+Let create a workgroup in CDK
+
+```ts
+const workgroup = new aws_redshiftserverless.CfnWorkgroup(
+  this,
+  "RedshiftWorkGroup",
+  {
+    workgroupName: "demo",
+    baseCapacity: 32,
+    namespaceName: "demo",
+    subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
+    publiclyAccessible: false,
+    securityGroupIds: [sg.securityGroupId],
+  }
+);
+```
+
+Let check the cost sofar
+
+```sql
+select trunc(start_time) "Day",
+sum(charged_seconds) as num_seconds,
+(sum(charged_seconds)/3600::double precision) * 0.36 as cost_incurred
+from sys_serverless_usage
+group by 1
+order by 1
+```
+
+Simple query to check charged_seconds and compute_seconds
+
+```sql
+select * from sys_serverless_usage
+```
+
 ## Reference
 
 - [redshift common task](https://docs.aws.amazon.com/redshift/latest/gsg/database-tasks.html)

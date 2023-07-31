@@ -154,7 +154,9 @@ export class RedshiftCluster extends Stack {
       nodeType: "dc2.large",
       numberOfNodes: 2,
       port: 5439,
-      publiclyAccessible: true,
+      // for security purpose 
+      publiclyAccessible: false, 
+      // publiclyAccessible: true,
       iamRoles: [deRole.roleArn, daRole.roleArn],
       availabilityZone: props.vpc.availabilityZones[0],
       clusterSubnetGroupName: subnetGroup.ref,
