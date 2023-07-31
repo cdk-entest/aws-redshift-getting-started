@@ -155,6 +155,29 @@ const workgroup = new aws_redshiftserverless.CfnWorkgroup(
 );
 ```
 
+## Serverless Pricing
+
+- [charged_seconds and compute_seconds](https://stackoverflow.com/questions/75182290/redshift-serverless-charged-seconds-and-compute-seconds)
+
+- [billing for redshift serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+Let check the cost sofar
+
+```sql
+select trunc(start_time) "Day",
+sum(charged_seconds) as num_seconds,
+(sum(charged_seconds)/3600::double precision) * 0.36 as cost_incurred
+from sys_serverless_usage
+group by 1
+order by 1
+```
+
+Simple query to check charged_seconds and compute_seconds
+
+```sql
+select * from sys_serverless_usage
+```
+
 ## Connection
 
 Either using notebook sql or normal query editor, we need to create a connection first.
@@ -569,3 +592,7 @@ COMPUDATE OFF
 - [billing for amazon redshift sesion timeout](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
 
 - [redshift serverless billing by query](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+- [charge_seconds and compute_seconds](https://stackoverflow.com/questions/75182290/redshift-serverless-charged-seconds-and-compute-seconds)
+
+- [billing for redshift serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
