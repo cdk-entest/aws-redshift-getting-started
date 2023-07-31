@@ -441,6 +441,8 @@ WHERE
 - workgroup
 - [charged_seconds and compute_seconds](https://stackoverflow.com/questions/75182290/redshift-serverless-charged-seconds-and-compute-seconds)
 - [billing for redshift serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+- set limit such as maximum rpu hours
+- set session timeout
 
 To use Redshift serverless, we need to create a namespace and a workgroup. A namespace is to manage username, database, roles, logs, and a workgroup is to manage capacity, security group.
 
