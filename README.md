@@ -551,3 +551,21 @@ COMPUDATE OFF
 - [TPCDS Cloud DWB](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/CloudDataWarehouseBenchmark/Cloud-DWB-Derived-from-TPCDS)
 
 - [redshift concurrency scaling](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)
+
+- [redshift serverless ip free](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-known-issues.html)
+
+- [redshift serverless capacity](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-capacity.html)
+
+- [redshift serverless billing](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+- [redshift serverless session timeout](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+- [redshift serverless best practice](https://aws.amazon.com/blogs/big-data/configure-monitoring-limits-and-alarms-in-amazon-redshift-serverless-to-keep-costs-predictable/)
+
+- [share data between redshift serverless and cluster](https://aws.amazon.com/blogs/big-data/easy-analytics-and-cost-optimization-with-amazon-redshift-serverless/)
+
+- [amazon redshift cannot query some tables](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-monitoring.html#serverless_views-monitoring)
+
+- [billing for amazon redshift sesion timeout](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+- [redshift serverless billing by query](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
