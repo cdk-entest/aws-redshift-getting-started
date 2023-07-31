@@ -357,7 +357,97 @@ select c_name, sum(o_totalprice) as total_purchase from (
 ) group by c_name order by total_purchase desc limit 10
 ```
 
+## Disk Consumption
+
+```sql
+SELECT
+  owner AS node,
+  diskno,
+  used,
+  capacity,
+  used/capacity::numeric * 100 as percent_used
+FROM stv_partitions
+WHERE host = node
+ORDER BY 1, 2;
+```
+
+and
+
+```sql
+SELECT
+  name,
+  count(*)
+FROM stv_blocklist
+JOIN (SELECT DISTINCT name, id as tbl from stv_tbl_perm) USING (tbl)
+GROUP BY name;
+```
+
+## Examine Load Operation
+
+From Redshift console, it is possible to check details of queries
+
+- Query and Loads
+- Query Details
+- Query Plan
+- CPU Utilization
+
+## Security Management
+
+Create a database user and gratn permissions
+
+```sql
+
+```
+
+Check permission of an user on a table
+
+```sql
+select has_table_privilege('dauser', 'tpch.orders', 'select')
+```
+
+Check permissions of users on some tables by using this cross join
+
+```sql
+SELECT
+    schemaname,
+    tablename
+    ,usename
+    ,HAS_TABLE_PRIVILEGE(users.usename,  schemaname || '.' || tablename, 'select') AS sel
+FROM
+(SELECT * from pg_tables WHERE schemaname = 'tpch' and tablename in ('orders', 'customer')) as tables,
+(SELECT * FROM pg_user) AS users;
+```
+
+Check permissions grated to an user
+
+```sql
+SELECT
+    u.usename,
+    s.schemaname,
+    has_schema_privilege(u.usename,s.schemaname,'create') AS user_has_select_permission,
+    has_schema_privilege(u.usename,s.schemaname,'usage') AS user_has_usage_permission
+FROM
+    pg_user u
+CROSS JOIN
+    (SELECT DISTINCT schemaname FROM pg_tables) s
+WHERE
+    u.usename = 'dauser'
+    AND s.schemaname = 'tpch'
+```
+
 ## Reference
+
+- [redshift common task](https://docs.aws.amazon.com/redshift/latest/gsg/database-tasks.html)
+
+- [redshift manager db security](https://docs.aws.amazon.com/redshift/latest/dg/r_Database_objects.html)
+
+- [redshift node type](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-upgrading-to-ra3)
+
+- [redshift role based access control](https://aws.amazon.com/blogs/big-data/simplify-management-of-database-privileges-in-amazon-redshift-using-role-based-access-control/)
+
+- [elastic resize and classic resize](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html#elastic-resize)
+
+- [how to resize cluster](https://repost.aws/knowledge-center/resize-redshift-cluster)
 
 - [redshift immersion day](https://catalog.workshops.aws/redshift-immersion/en-US)
 
@@ -378,3 +468,15 @@ select c_name, sum(o_totalprice) as total_purchase from (
 - [redshift concurrency scaling](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)
 
 - [redshift concurrent queries python](https://saturncloud.io/blog/how-to-execute-redshift-queries-in-parallel-a-comprehensive-guide-for-data-scientists/)
+
+- [redshift re-invent paper](https://d2cvlmmg8c0xrp.cloudfront.net/book/amazon_redshift_reinvent.pdf)
+
+- [redshift compare node type](https://aws.amazon.com/blogs/big-data/compare-different-node-types-for-your-workload-using-amazon-redshift/)
+
+- [redshift user permissions](https://chartio.com/learn/amazon-redshift/how-to-view-permissions-in-amazon-redshift/#:~:text=To%20view%20the%20permissions%20of,usename%2C%20s.)
+
+- [boto3 redshift-data](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/redshift-data.html)
+
+- [redshift data api cli](https://aws.amazon.com/blogs/big-data/using-the-amazon-redshift-data-api-to-interact-with-amazon-redshift-clusters/)
+
+- [has_table_privilege](https://docs.aws.amazon.com/redshift/latest/dg/r_HAS_TABLE_PRIVILEGE.html)
