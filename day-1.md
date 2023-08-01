@@ -359,6 +359,8 @@ select c_name, sum(o_totalprice) as total_purchase from (
 
 ## Disk Consumption
 
+Please note that serverless is not able to run query on STV tables.
+
 ```sql
 SELECT
   owner AS node,
@@ -396,7 +398,15 @@ From Redshift console, it is possible to check details of queries
 Create a database user and gratn permissions
 
 ```sql
+drop user if exists dauser;
+create user dauser with password 'Dauser2023' connection limit 30;
+```
 
+create dsuser
+
+```sql
+drop user if exists dsuser;
+create user dsuser with password 'Dsuser2023' connection limit 30;
 ```
 
 Check permission of an user on a table
@@ -437,12 +447,12 @@ WHERE
 
 ## Redshift Serverless
 
-- namespace
-- workgroup
+- namespace, workgroup
 - [charged_seconds and compute_seconds](https://stackoverflow.com/questions/75182290/redshift-serverless-charged-seconds-and-compute-seconds)
 - [billing for redshift serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
-- set limit such as maximum rpu hours
-- set session timeout
+- set limit such as maximum rpu hours, set session timeout
+- [serverless cannot query some STV tables](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-monitoring.html#serverless_views-monitoring)
+- [load TPCDS 1TB billion rows](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/CloudDataWarehouseBenchmark/Cloud-DWB-Derived-from-TPCDS)
 
 To use Redshift serverless, we need to create a namespace and a workgroup. A namespace is to manage username, database, roles, logs, and a workgroup is to manage capacity, security group.
 
@@ -498,6 +508,47 @@ Simple query to check charged_seconds and compute_seconds
 select * from sys_serverless_usage
 ```
 
+## Serverless Query
+
+- [load TPCDS or TPCH 1TB, 3TB](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/CloudDataWarehouseBenchmark)
+
+check tables size
+
+```sql
+select 'table', size, tbl_rows from SVV_TABLE_INFO
+where schema='demo';
+```
+
+System table - query history
+
+```sql
+select * from SYS_QUERY_HISTORY;
+```
+
+System table - load data history
+
+```sql
+select * from SYS_LOAD_HISTORY;
+
+select * from SYS_LOAD_HISTORY;
+where data_source like '%TPC%'
+order by loaded_rows desc;
+```
+
+check duration and loaded bytes
+
+```sql
+select
+    data_source,
+    duration / 1000000 as duration_second,
+    loaded_rows,
+    loaded_bytes,
+    source_file_bytes
+from SYS_LOAD_HISTORY
+where data_source like '%TPC%'
+order by loaded_rows desc;
+```
+
 ## Reference
 
 - [redshift common task](https://docs.aws.amazon.com/redshift/latest/gsg/database-tasks.html)
@@ -543,3 +594,9 @@ select * from sys_serverless_usage
 - [redshift data api cli](https://aws.amazon.com/blogs/big-data/using-the-amazon-redshift-data-api-to-interact-with-amazon-redshift-clusters/)
 
 - [has_table_privilege](https://docs.aws.amazon.com/redshift/latest/dg/r_HAS_TABLE_PRIVILEGE.html)
+
+- [serverless cannot query some STV tables](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-monitoring.html#serverless_views-monitoring)
+
+- [redshift concurrent scaling](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)
+
+- [load TPCDS 1TB billion rows](https://github.com/awslabs/amazon-redshift-utils/tree/master/src/CloudDataWarehouseBenchmark/Cloud-DWB-Derived-from-TPCDS)

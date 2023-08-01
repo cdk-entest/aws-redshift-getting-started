@@ -548,11 +548,13 @@ alter table sales alter sortkey (saletime);
 
 ## Workload Management
 
-- Observe query queue
+- [workload management queue](https://docs.aws.amazon.com/redshift/latest/dg/c_workload_mngmt_classification.html)
 - Super user queue and default queue
 - Route queries based on query_group
 - Route queries based on user_group
 - Queue order is the matter
+
+> With manual WLM, Amazon Redshift configures one queue with a concurrency level of five, which enables up to five queries to run concurrently, plus one predefined Superuser queue, with a concurrency level of one. You can define up to eight queues. Each queue can be configured with a maximum concurrency level of 50. The maximum total concurrency level for all user-defined queues (not including the Superuser queue) is 50
 
 1.  Some useful table when working with WML
 
@@ -790,6 +792,9 @@ Run the query that already in the third tab and observe things, there will be a 
 
 ## Concurrency Scaling
 
+- [scale read and write redshift](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)
+- [concurency scaling redshift](https://aws.amazon.com/blogs/aws/new-concurrency-scaling-for-amazon-redshift-peak-performance-at-all-times/)
+
 ## Reference
 
 - [COPY parameters](https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html)
@@ -807,3 +812,9 @@ Run the query that already in the third tab and observe things, there will be a 
 - [how sort key work in redshift](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html)
 
 - [svv_table_info](https://docs.aws.amazon.com/redshift/latest/dg/r_SVV_TABLE_INFO.html)
+
+- [wlm queue concurency limit on main](https://docs.aws.amazon.com/redshift/latest/dg/c_workload_mngmt_classification.html)
+
+- [redshift serverless annoucement](https://aws.amazon.com/blogs/aws/introducing-amazon-redshift-serverless-run-analytics-at-any-scale-without-having-to-manage-infrastructure/)
+
+- [redshift serverless consideration](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-known-issues.html)
