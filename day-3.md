@@ -8,17 +8,12 @@ date: 28/07/2023
 
 ## Introduction
 
+- Work load managener (WLM)
 - Redshift Spectrum query data lake
-- Redshift and Machine Learning
-- Redshift federated query
 - Redshift and QuickSight
-- Redshift and Aurora - Zero ETL (ELT)
 - Redshift snapshot and recovery
-- Redshift share data
 - Resize clsuter
-- Limit and monitoring
-
-## Redshift and Aurora
+- Monitoring and auditing
 
 ## Redshift Spectrum
 
@@ -170,11 +165,7 @@ GROUP BY spectrum.sales_partitioned.eventid
 ORDER BY 2 DESC
 ```
 
-## Redshift Federated Query
-
 ## Snapshot and Recovery
-
-## Share Data
 
 ## Resize Cluster
 
