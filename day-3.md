@@ -10,6 +10,7 @@ date: 28/07/2023
 
 - Work load managener (WLM)
 - Redshift Spectrum query data lake
+- Redshift and SageMake (ML)
 - Redshift and QuickSight
 - Redshift snapshot and recovery
 - Resize clsuter
@@ -413,6 +414,48 @@ ORDER BY 2 DESC
 
 - [scale read and write redshift](https://aws.amazon.com/blogs/big-data/scale-read-and-write-workloads-with-amazon-redshift/)
 - [concurency scaling redshift](https://aws.amazon.com/blogs/aws/new-concurrency-scaling-for-amazon-redshift-peak-performance-at-all-times/)
+
+Let use Process in python to send concurrent queries to Redshift Serverless
+
+```py
+import os
+import redshift_connector
+import pandas as pd
+from multiprocessing import Process
+
+def run_query():
+    """
+    """
+    conn = redshift_connector.connect(
+     host='hello.111222333444.ap-southeast-1.redshift-serverless.amazonaws.com',
+     database='dev',
+     port=5439,
+     user='admin',
+     password='')
+    #
+    cursor = conn.cursor()
+    # query
+    query= """
+    select c_name, sum(o_totalprice) as total_purchase from (
+    select c_name, o_totalprice from customer, orders
+    where customer.c_custkey = orders.o_custkey
+    ) group by c_name order by total_purchase desc limit 10;
+    """
+    # set cache result off
+    cursor.execute("""
+    SET enable_result_cache_for_session TO off;
+    """)
+    # run query
+    cursor.execute(query)
+    # return data frame
+    df: pd.DataFrame = cursor.fetch_dataframe()
+    # print result
+    print("thread {} \n".format(os.getpid()))
+    print(df.head())
+
+for k in range(100):
+    Process(target=run_query).start()
+```
 
 ## Snapshot and Recovery
 
