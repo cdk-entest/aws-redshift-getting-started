@@ -426,13 +426,14 @@ from multiprocessing import Process
 def run_query():
     """
     """
+    # create a connection
     conn = redshift_connector.connect(
      host='hello.111222333444.ap-southeast-1.redshift-serverless.amazonaws.com',
      database='dev',
      port=5439,
      user='admin',
      password='')
-    #
+    # create cursor
     cursor = conn.cursor()
     # query
     query= """
