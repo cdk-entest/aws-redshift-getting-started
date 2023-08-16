@@ -38,68 +38,13 @@ const wlm = [
 interface RedshiftClusterProps extends StackProps {
   vpc: aws_ec2.Vpc;
   sg: aws_ec2.SecurityGroup;
+  roles: aws_iam.Role[];
   version: string;
 }
 
 export class RedshiftCluster extends Stack {
   constructor(scope: Construct, id: string, props: RedshiftClusterProps) {
     super(scope, id, props);
-
-    // associate role for data analyst
-    const daRole = new aws_iam.Role(
-      this,
-      "RedshiftAssociateIAMRoleForDataAnalyst",
-      {
-        roleName: "RedshiftAssociateIAMRoleForDataAnalyst",
-        assumedBy: new aws_iam.CompositePrincipal(
-          new aws_iam.ServicePrincipal("redshift.amazonaws.com"),
-          new aws_iam.ServicePrincipal("sagemaker.amazonaws.com"),
-          new aws_iam.ServicePrincipal("redshift-serverless.amazonaws.com")
-        ),
-      }
-    );
-
-    daRole.addToPolicy(
-      new aws_iam.PolicyStatement({
-        effect: aws_iam.Effect.ALLOW,
-        resources: ["*"],
-        actions: ["s3:*"],
-      })
-    );
-
-    daRole.addManagedPolicy(
-      aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
-        "AmazonRedshiftAllCommandsFullAccess"
-      )
-    );
-
-    // associate role for data engineer
-    const deRole = new aws_iam.Role(
-      this,
-      "RedshiftAssociateIAMRoleForDataEngineer",
-      {
-        roleName: "RedshiftAssociateIAMRoleForDataEngineer",
-        assumedBy: new aws_iam.CompositePrincipal(
-          new aws_iam.ServicePrincipal("redshift.amazonaws.com"),
-          new aws_iam.ServicePrincipal("sagemaker.amazonaws.com"),
-          new aws_iam.ServicePrincipal("redshift-serverless.amazonaws.com")
-        ),
-      }
-    );
-
-    deRole.addToPolicy(
-      new aws_iam.PolicyStatement({
-        effect: aws_iam.Effect.ALLOW,
-        resources: ["*"],
-        actions: ["s3:*"],
-      })
-    );
-
-    deRole.addManagedPolicy(
-      aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
-        "AmazonRedshiftAllCommandsFullAccess"
-      )
-    );
 
     // subnet group
     const subnetGroup = new aws_redshift.CfnClusterSubnetGroup(
@@ -154,10 +99,10 @@ export class RedshiftCluster extends Stack {
       nodeType: "dc2.large",
       numberOfNodes: 2,
       port: 5439,
-      // for security purpose 
-      publiclyAccessible: false, 
+      // for security purpose
+      publiclyAccessible: false,
       // publiclyAccessible: true,
-      iamRoles: [deRole.roleArn, daRole.roleArn],
+      iamRoles: props.roles.map((role) => role.roleArn),
       availabilityZone: props.vpc.availabilityZones[0],
       clusterSubnetGroupName: subnetGroup.ref,
       vpcSecurityGroupIds: [props.sg.securityGroupId],

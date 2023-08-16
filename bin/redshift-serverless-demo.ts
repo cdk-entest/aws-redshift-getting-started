@@ -8,7 +8,7 @@ const REGION = "ap-southeast-1";
 
 const app = new cdk.App();
 
-const network = new NetworkStack(app, "NetworkStack", {
+const network = new NetworkStack(app, "RedshiftNetworkStack", {
   env: {
     region: REGION,
     account: process.env.CDK_DEFAULT_ACCOUNT,
@@ -17,6 +17,7 @@ const network = new NetworkStack(app, "NetworkStack", {
 
 new RedshiftServerlessStack(app, "RedshiftServerlessStack", {
   vpc: network.vpc,
+  sg: network.serverlessSG,
   env: {
     region: REGION,
     account: process.env.CDK_DEFAULT_ACCOUNT,
@@ -25,8 +26,9 @@ new RedshiftServerlessStack(app, "RedshiftServerlessStack", {
 
 const cluster = new RedshiftCluster(app, "RedshiftCluster", {
   vpc: network.vpc,
-  sg: network.sg,
+  sg: network.clusterSG,
   version: "redshift-1.0",
+  roles: network.roles,
   env: {
     region: REGION,
     account: process.env.CDK_DEFAULT_ACCOUNT,

@@ -9,6 +9,7 @@ import { Construct } from "constructs";
 
 interface RedshiftServerlessProps extends StackProps {
   vpc: aws_ec2.Vpc;
+  sg: aws_ec2.SecurityGroup;
 }
 
 export class RedshiftServerlessStack extends Stack {
@@ -41,15 +42,6 @@ export class RedshiftServerlessStack extends Stack {
       aws_iam.ManagedPolicy.fromAwsManagedPolicyName("CloudWatchLogsFullAccess")
     );
 
-    const sg = new aws_ec2.SecurityGroup(
-      this,
-      "SecurityGroupForRedshiftServerless",
-      {
-        securityGroupName: "SecurityGroupForRedshiftServerless",
-        vpc: props.vpc,
-      }
-    );
-
     // security block this
     // sg.addIngressRule(aws_ec2.Peer.anyIpv4(), aws_ec2.Port.tcp(5439));
 
@@ -76,7 +68,7 @@ export class RedshiftServerlessStack extends Stack {
         namespaceName: "demo",
         subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
         publiclyAccessible: false,
-        securityGroupIds: [sg.securityGroupId],
+        securityGroupIds: [props.sg.securityGroupId],
       }
     );
 
