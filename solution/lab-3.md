@@ -7,10 +7,10 @@ date: 24/08/2023
 > [!IMPORTANT]
 > Explain data distribution styles: EVEN, ALL, KEY, AUTO
 
-- EVEN: distribute rows across all slices in a round-robin fashin regardless of the values in any particular column
-- ALL: distribute a copy of the entire table to every node
-- KEY: distribute row according to the values in a specified column. If you distribute a pair of tables with a KEY column, rows with the same value in that column are stored on the same slice.
-- AUTO: assign an optimal distribution style based on the size of the table data. For example, Amazon Redshift initially assigns ALL distribution to a small table and then changes to EVEN distriubtion when the table grows larger.
+> - EVEN: distribute rows across all slices in a round-robin fashin regardless of the values in any particular column
+> - ALL: distribute a copy of the entire table to every node
+> - KEY: distribute row according to the values in a specified column. If you distribute a pair of tables with a KEY column, rows with the same value in that column are stored on the same slice.
+> - AUTO: assign an optimal distribution style based on the size of the table data. For example, Amazon Redshift initially assigns ALL distribution to a small table and then changes to EVEN distriubtion when the table grows larger.
 
 ## Distribution Key
 
