@@ -139,6 +139,11 @@ WHERE saletime between '2008-08-01 00:00:00'::TIMESTAMP AND '2008-08-01 23:59:59
 > [!IMPORTANT]
 > Goto the query history to compare the running time (1000ms versus 524ms)
 
+```sql
+select * from SYS_QUERY_HISTORY
+order by execution_time desc
+```
+
 ## Challenges
 
 Discuss about TICKIT dataset, schema, select distribution key and sorted key
