@@ -551,6 +551,26 @@ COMPUDATE OFF
 
 > When COMPUPDATE is OFF (or FALSE), automatic compression is disabled. Column encodings aren't changed.
 
+## Troubleshooting
+
+Check family of aurora version
+
+```bash
+aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily"
+```
+
+and to find out db instance classess supported in a region based on engine and engine-version
+
+```bash
+aws rds describe-orderable-db-instance-options --engine aurora-mysql --engine-version 8.0.mysql_aurora.3.03.1 --query "OrderableDBInstanceOptions[].{DBInstanceClass:DBInstanceClass,SupportedEngineModes:SupportedEngineModes[0]}" --output table
+```
+
+Redshift serverless case sensitive
+
+```bash
+aws redshift-serverless update-workgroup --workgroup-name zero-etl --config-parameters parameterKey=enable_case_sensitive_identifier,parameterValue=true --region us-east-1
+```
+
 ## Reference
 
 - [Redshift Workshop Load Data](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab2)
@@ -596,3 +616,7 @@ COMPUDATE OFF
 - [charge_seconds and compute_seconds](https://stackoverflow.com/questions/75182290/redshift-serverless-charged-seconds-and-compute-seconds)
 
 - [billing for redshift serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-billing.html)
+
+- [cloudformation template aurora example](https://repost.aws/questions/QUZJaqJ4PmTmGdxi3F76Xvig/error-dbclusterinstanceclass-isn-t-supported-for-db-engine-aurora-mysql-cloudformation)
+
+- [aurora zero etl](https://aws.amazon.com/blogs/big-data/getting-started-guide-for-near-real-time-operational-analytics-using-amazon-aurora-zero-etl-integration-with-amazon-redshift/)

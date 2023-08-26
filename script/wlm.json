@@ -1,0 +1,38 @@
+[
+  {
+    "auto_wlm": true,
+    "user_group": [
+      "data_engineers"
+    ],
+    "query_group": [
+      "load",
+      "transform"
+    ],
+    "queue_type": "auto",
+    "name": "ETL",
+    "rules": [
+      {
+        "rule_name": "Rule_0",
+        "action": "abort",
+        "predicate": [
+          {
+            "metric_name": "return_row_count",
+            "operator": ">",
+            "value": 1000
+          }
+        ]
+      }
+    ],
+    "concurrency_scaling": "off",
+    "priority": "normal"
+  },
+  {
+    "auto_wlm": true,
+    "user_group": [],
+    "query_group": [],
+    "name": "Default queue"
+  },
+  {
+    "short_query_queue": true
+  }
+]

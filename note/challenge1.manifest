@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "url": "s3://aws-tc-largeobjects/ILT-TF-200-DBDWOA-1/copy-command/challenge1a.txt",
+      "mandatory": true
+    },
+    {
+      "url": "s3://aws-tc-largeobjects/ILT-TF-200-DBDWOA-1/copy-command/challenge1b.txt",
+      "mandatory": true
+    },
+    {
+      "url": "s3://aws-tc-largeobjects/ILT-TF-200-DBDWOA-1/copy-command/challenge1c.txt",
+      "mandatory": true
+    }
+  ]
+}

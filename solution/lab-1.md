@@ -42,6 +42,22 @@ GZIP
 REGION 'us-west-2';
 ```
 
+Check COPY performance
+
+```sql
+select * from SYS_LOAD_HISTORY
+where data_source like '%aws-tc%'
+order by duration desc;
+```
+
+And query history
+
+```sql
+select query, service_class, queue_elapsed, exec_elapsed, wlm_total_elapsed
+from svl_query_queue_info
+where wlm_total_elapsed > 0;
+```
+
 ## Simple Query
 
 Query to check
@@ -214,13 +230,13 @@ JOIN (SELECT DISTINCT name, id as tbl from stv_tbl_perm) USING (tbl)
 GROUP BY name;
 ```
 
-## Query Monitoring 
+## Query Monitoring
+
 <img width="1045" alt="Screenshot 2023-08-24 at 14 43 38" src="https://github.com/cdk-entest/aws-redshift-getting-started/assets/20411077/106d54ef-0415-4647-badf-0dad9c00207f">
 
-and 
+and
 
 <img width="1045" alt="Screenshot 2023-08-24 at 14 43 50" src="https://github.com/cdk-entest/aws-redshift-getting-started/assets/20411077/dc4d2416-0885-45ae-b433-0d4993a8478a">
-
 
 ## Reference
 

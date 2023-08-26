@@ -1,0 +1,302 @@
+1    Burj Khalifa                                   Dubai            UAE          828    2717 163    2010
+2    Shanghai Tower                                 Shanghai         China        632    2073 121    2014
+3    Makkah Royal Clock Tower Hotel                 Mecca            Saudi Arabia 601    1971 120    2012
+4    One World Trade Center                         New York City    USA          541.3  1776 104    2013
+5    Taipei 101                                     Taipei           Taiwan       509    1670 101    2004
+6    Shanghai World Financial Center                Shanghai         China        492    1614 101    2008
+7    International Commerce Centre                  Hong Kong        Hong Kong    484    1588 118    2010
+8    Petronas Tower 1                               Kuala Lumpur     Malaysia     452    1483 88     1998
+8    Petronas Tower 2                               Kuala Lumpur     Malaysia     452    1483 88     1998
+10   Zifeng Tower                                   Nanjing          China        450    1476 89     2010
+11   Willis Tower (Formerly Sears Tower)            Chicago          USA          442    1450 108    1973
+12   Kingkey 100                                    Shenzhen         China        442    1449 100    2011
+13   Guangzhou International Finance Center         Guangzhou        China        440    1440 103    2010
+14   Dream Dubai Marina                             Dubai            UAE          432    1417 101    2014
+15   Trump International Hotel and Tower            Chicago          USA          423    1389 98     2009
+16   Jin Mao Tower                                  Shanghai         China        421    1380 88     1999
+17   Princess Tower                                 Dubai            UAE          414    1358 101    2012
+18   Al Hamra Firdous Tower                         Kuwait City      Kuwait       413    1354 77     2011
+19   2 International Finance Centre                 Hong Kong        Hong Kong    412    1352 88     2003
+20   23 Marina                                      Dubai            UAE          395    1296 89     2012
+21   CITIC Plaza                                    Guangzhou        China        391    1283 80     1997
+22   Shun Hing Square                               Shenzhen         China        384    1260 69     1996
+23   Central Market Project                         Abu Dhabi        UAE          381    1251 88     2012
+24   Empire State Building                          New York City    USA          381    1250 102    1931
+25   Elite Residence                                Dubai            UAE          380.5  1247 87     2012
+26   Tuntex Sky Tower                               Kaohsiung        Taiwan       378    1240 85     1997
+27   Central Plaza                                  Hong Kong        Hong Kong    374    1227 78     1992
+28   Bank of China Tower                            Hong Kong        Hong Kong    367    1205 70     1990
+29   Bank of America Tower                          New York City    USA          366    1200 54     2009
+30   Almas Tower                                    Dubai            UAE          363    1191 68     2009
+31   The Pinnacle                                   Guangzhou        China        360    1181 60     2012
+32   SEG Plaza                                      Shenzhen         China        356    1168 70     2000
+33   JW Marriott Marquis Dubai Tower 1              Dubai            UAE          355    1166 82     2012
+33   JW Marriott Marquis Dubai Tower 2              Dubai            UAE          355    1166 82     2013
+35   Emirates Office Tower                          Dubai            UAE          355    1163 54     2000
+36   Aon Center                                     Chicago          USA          346    1136 83     1973
+37   The Center                                     Hong Kong        Hong Kong    346    1135 73     1998
+38   Keangnam Hanoi Landmark Tower                  Hanoi            Vietnam      345    1132 72     2011
+39   John Hancock Center                            Chicago          USA          344    1128 100    1969
+40   Ahmed Abdul Rahim Al Attar Tower               Dubai            UAE          342    1122 76     2010
+41   Mercury City Tower                             Moscow           Russia       339    1112 75     2012
+41   Hefei Feicui TV Tower                          Hefei            China        339    1112 75     2012
+43   Tianjin World Financial Center                 Tianjin          China        337    1105 79     2010
+43   The Marina Torch                               Dubai            UAE          337    1105 79     2011
+45   Shimao International Plaza                     Shanghai         China        333    1094 61     2005
+46   Rose Tower                                     Dubai            UAE          333    1093 72     2007
+47   Modern Media Center                            Changzhou        China        332    1089 57     2012
+48   Minsheng Bank Building                         Wuhan            China        331    1087 68     2007
+49   China World Trade Center Tower 3               Beijing          China        330    1083 74     2009
+49   Ryugyong Hotel                                 Pyongyang        North Korea  330    1083 105    1992
+51   The Index                                      Dubai            UAE          328    1076 80     2010
+51   Al Yaqoub Tower                                Dubai            UAE          328    1076 69     2013
+51   Longxi International Hotel                     Huaxi Village    China        328    1076 72     2011
+54   The Landmark                                   Abu Dhabi        UAE          324    1072 72     2012
+54   Deji Plaza Phase 2                             Nanjing          China        324    1072 62     2013
+56   Q1                                             Gold Coast       Australia    323    1058 80     2005
+57   Wenzhou World Trade Center                     Wenzhou          China        322    1056 68     2010
+58   Burj Al Arab                                   Dubai            UAE          321    1053 60     1999
+59   Nina Tower                                     Hong Kong        Hong Kong    319    1049 80     2007
+60   Chrysler Building                              New York City    USA          319    1047 77     1930
+61   New York Times Building                        New York City    USA          319    1046 52     2007
+62   HHHR Tower                                     Dubai            UAE          317    1042 72     2010
+63   Bank of America Plaza                          Atlanta          USA          317    1040 55     1992
+64   Moi Center                                     Shenyang         China        311    1020 75     2012
+65   U.S. Bank Tower                                Los Angeles      USA          310    1018 73     1989
+66   Menara Telekom                                 Kuala Lumpur     Malaysia     310    1017 55     2001
+66   Ocean Heights                                  Dubai            UAE          310    1017 82     2010
+66   Sky Tower                                      Abu Dhabi        UAE          310    1017 74     2010
+69   Pearl River Tower                              Guangzhou        China        310    1016 71     2012
+70   Jumeirah Emirates Towers Hotel                 Dubai            UAE          309    1014 56     2000
+71   Eurasia                                        Moscow           Russia       309    1013 72     2013
+72   Burj Rafal                                     Riyadh           Saudi Arabia 308    1010 68     2014
+73   Franklin Center                                Chicago          USA          307    1007 60     1989
+74   Cayan Tower                                    Dubai            UAE          306    1005 76     2013
+75   One57                                          New York City    USA          306    1004 75     2013
+75   East Pacific Center Tower A                    Shenzhen         China        306    1004 85     2012
+75   The Shard                                      London           UK           306    1004 72     2012
+75   The Address Downtown Burj Khalifa              Dubai            UAE          306    1004 63     2008
+79   JPMorgan Chase Tower                           Houston          USA          305    1002 75     1982
+79   Etihad Tower 2                                 Abu Dhabi        UAE          305    1002 79     2011
+81   Northeast Asia Trade Tower                     Incheon          South Korea  305    1001 68     2010
+82   Baiyoke Tower II                               Bangkok          Thailand     304    997  85     1997
+83   Two Prudential Plaza                           Chicago          USA          303    995  64     1990
+84   Moi City                                       Wuxi             China        303    994  72     2012
+85   Leatop Plaza                                   Guangzhou        China        303    993  65     2011
+86   Wells Fargo Plaza                              Houston          USA          302    992  71     1983
+86   Kingdom Centre                                 Riyadh           Saudi Arabia 302    992  41     2002
+88   Gate of the Orient                             Suzhou           China        302    990  68     2012
+89   Moscow Tower                                   Moscow           Russia       302    989  76     2010
+90   We've the Zenith Tower A                       Busan            South Korea  301    987  80     2011
+91   Aspire Tower                                   Doha             Qatar        300    984  36     2007
+91   Arraya 2                                       Kuwait City      Kuwait       300    984  60     2009
+91   Gran Torre Santiago                            Santiago         Chile        300    984  64     2012
+94   One Island East                                Hong Kong        Hong Kong    298    979  67     2008
+95   Shanghai Wheelock Square                       Shanghai         China        298    978  58     2009
+95   First Canadian Place                           Toronto          Canada       298    978  72     1976
+97   4 World Trade Center                           New York         USA          298    977  72     2012
+98   Eureka Tower                                   Melbourne        Australia    297    975  91     2006
+98   Comcast Center                                 Philadelphia     USA          297    975  57     2008
+100  Yokohama Landmark Tower                        Yokohama         Japan        296    972  73     1993
+101  Emirates Crown                                 Dubai            UAE          296    971  63     2008
+102  Islamic Bank Office Tower                      Dubai            UAE          294    964  49     2011
+102  Khalid Al Attar Tower 2                        Dubai            UAE          294    964  61     2010
+104  311 South Wacker Drive                         Chicago          USA          293    961  65     1990
+104  Trump Ocean Club International Hotel and Tower Panama City      Panama       293    961  68     2011
+106  Haeundae I Park Marina Tower 2                 Busan            South Korea  292    959  72     2012
+107  American International Building                New York City    USA          290    952  66     1932
+108  Busan International Finance Center             Busan            South Korea  289    948  63     2014
+108  Dongguan TBA Tower                             Dongguan         China        289    948  68     2010
+109  Key Tower                                      Cleveland        USA          289    947  57     1991
+110  One Liberty Place                              Philadelphia     USA          288    945  61     1987
+110  Plaza 66 Tower One                             Shanghai         China        288    945  66     2001
+112  Chongqing Poly Tower                           Chongqing        China        287    941  58     2010
+113  SPG Global Tower 1                             Suzhou           China        286    938  54     2010
+113  SPG Global Tower 2                             Suzhou           China        286    938  54     2010
+115  Columbia Center                                Seattle          USA          285    937  76     1985
+116  Yingli Tower                                   Chongqing        China        285    936  65     2012
+117  Millennium Tower                               Dubai            UAE          285    935  60     2006
+117  Sulafa Tower                                   Dubai            UAE          285    935  75     2010
+119  Tomorrow Square                                Shanghai         China        285    934  55     2003
+120  D1                                             Dubai            UAE          284    932  80     2012
+121  Chongqing World Trade Center                   Chongqing        China        283    929  60     2005
+122  Cheung Kong Centre                             Hong Kong        Hong Kong    283    928  62     1999
+123  The Trump Building                             New York City    USA          283    927  70     1930
+124  We've the Zenith Tower B                       Busan            South Korea  282    924  75     2011
+125  Vitri Tower                                    Panama City      Panama       281    922  75     2012
+126  Bank of America Plaza                          Dallas           USA          281    921  72     1985
+127  OUB Centre                                     Singapore        Singapore    280    919  66     1986
+127  UOB Plaza One                                  Singapore        Singapore    280    919  66     1992
+127  Republic Plaza                                 Singapore        Singapore    280    919  66     1996
+127  Marina Pinnacle                                Dubai            UAE          280    919  73     2010
+131  Seoul International Financial Center           Seoul            South Korea  279    916  55     2012
+132  Citigroup Center                               New York City    USA          279    915  59     1977
+132  Greenland Plaza                                Zhengzhou        China        279    915  56     2012
+134  Hong Kong New World Tower                      Shanghai         China        278    913  61     2002
+135  Trust Tower                                    Abu Dhabi        UAE          278    912  60     2010
+135  Etihad Tower 1                                 Abu Dhabi        UAE          278    911  70     2011
+137  Trump International Hotel and Tower            Toronto          Canada       277    908  57     2012
+138  Diwang International Commerce Center           Nanning          China        276    906  54     2006
+139  Scotia Plaza                                   Toronto          Canada       275    902  68     1988
+140  Williams Tower                                 Houston          USA          275    901  64     1983
+141  Nantong Zhongnan International Plaza           Nantong          China        273    897  53     2011
+142  Wuhan World Trade Tower                        Wuhan            China        273    896  58     1998
+142  Lvjing Tower                                   Shenzhen         China        273    896  56     2011
+142  Shimao International Center                    Fuzhou           China        273    896  56     2012
+145  Haeundae I Park Marina Tower 1                 Busan            South Korea  273    895  66     2011
+146  United International                           Chongqing        China        271    889  68     2012
+147  Renaissance Tower                              Dallas           USA          270    886  56     1974
+147  The Cullinan South Tower                       Hong Kong        Hong Kong    270    886  68     2008
+147  The Cullinan North Tower                       Hong Kong        Hong Kong    270    886  68     2008
+147  China International Center Tower B             Guangzhou        China        270    886  62     2007
+151  Dapeng International Plaza                     Guangzhou        China        269    884  56     2006
+152  One Lujiazui                                   Shanghai         China        269    883  47     2008
+152  JAL Hotel                                      Dubai            UAE          269    883  60     2008
+152  21st Century Tower                             Dubai            UAE          269    883  55     2003
+155  Bitexco Financial Tower                        Ho Chi Minh City Vietnam      269    882  68     2010
+156  Naberezhnaya Tower C                           Moscow           Russia       268    881  61     2007
+157  Bank of Guangzhou Tower                        Guangzhou        China        268    878  57     2012
+158  Al Faisaliyah Center                           Riyadh           Saudi Arabia 267    876  44     2000
+158  8 Spruce Street                                New York City    USA          267    876  76     2010
+158  Star Bay Tower                                 Panama City      Panama       267    876  65     2012
+161  Fortune Center Phase 3                         Beijing          China        266    874  56     2012
+162  The Point                                      Panama City      Panama       266    873  65     2011
+163  The River                                      Bangkok          Thailand     265    871  73     2012
+163  Bank of America Corporate Center               Charlotte        USA          265    871  60     1992
+165  900 North Michigan                             Chicago          USA          265    869  66     1989
+165  Al Kazim Tower 1                               Dubai            UAE          265    869  53     2008
+165  Al Kazim Tower 2                               Dubai            UAE          265    869  53     2008
+165  Bocom Financial Towers                         Shanghai         China        265    869  52     2002
+165  120 Collins Street                             Melbourne        Australia    265    869  52     1991
+165  We've the Zenith Tower C                       Busan            South Korea  265    869  70     2011
+165  WBC The Palace Towers Tower 1                  Busan            South Korea  265    869  71     2010
+165  WBC The Palace Towers Tower 2                  Busan            South Korea  265    869  71     2010
+173  SunTrust Plaza                                 Atlanta          USA          264    867  60     1992
+174  Triumph-Palace                                 Moscow           Russia       264    866  54     2005
+174  Arts Tower                                     Panama City      Panama       264    866  80     2012
+176  Samsung Tower Palace 3, Tower G                Seoul            South Korea  264    865  73     2004
+177  Trump World Tower                              New York City    USA          262    859  72     2001
+177  Water Tower Place                              Chicago          USA          262    859  74     1976
+177  Grand Gateway Shanghai I                       Shanghai         China        262    859  52     2005
+177  Grand Gateway Shanghai II                      Shanghai         China        262    859  52     2005
+177  Aqua                                           Chicago          USA          262    859  86     2009
+182  Aon Center                                     Los Angeles      USA          262    858  62     1973
+183  East Pacific Center Tower B                    Shenzhen         China        261    856  72     2012
+183  Sapphire of Istanbul                           Istanbul         Turkey       261    856  54     2010
+183  Grand Lisboa                                   Macau            China        261    856  47     2008
+183  TD Canada Trust Tower                          Toronto          Canada       261    856  53     1990
+183  The Masterpiece                                Hong Kong        Hong Kong    261    856  64     2007
+183  Islamic Bank Residential Tower                 Dubai            UAE          261    856  51     2011
+189  Etihad Tower 3                                 Abu Dhabi        UAE          260    854  62     2011
+190  Vision Tower                                   Dubai            UAE          260    853  60     2010
+190  Shanghai IFC North Tower                       Shanghai         China        260    853  60     2011
+190  Jing'an Kerry Center Phase 2                   Shanghai         China        260    853  58     2012
+190  Sunny World Center                             Shenyang         China        260    853  59     2012
+190  Bahrain Financial Harbour 1                    Manama           Bahrain      260    853  53     2007
+190  Bahrain Financial Harbour 2                    Manama           Bahrain      260    853  53     2007
+190  101 Collins Street                             Melbourne        Australia    260    853  50     1991
+190  Abraj Al Bait Hajar Tower                      Mecca            Saudi Arabia 260    853  48     2012
+190  Abraj Al Bait ZamZam Tower                     Mecca            Saudi Arabia 260    853  48     2012
+190  Shenzhen Special Zone Press Tower              Shenzhen         China        260    853  48     1998
+190  Transamerica Pyramid                           San Francisco    USA          260    853  48     1972
+201  Chase Tower                                    Chicago          USA          259    850  60     1969
+201  GE Building                                    New York City    USA          259    850  69     1933
+201  Commerzbank Tower                              Frankfurt        Germany      259    850  56     1997
+201  PBCOM Tower                                    Makati           Philippines  259    850  55     2000
+205  Two Liberty Place                              Philadelphia     USA          258    848  58     1990
+206  Huamin Imperial Tower                          Shanghai         China        258    847  63     2011
+207  Lanko Grand Hyatt Hotel                        Chongqing        China        258    846  60     2004
+207  Tianjin Hutchinson Whampoa Metro Plaza         Tianjin          China        258    846  53     2012
+209  Park Tower                                     Chicago          USA          257    844  67     2000
+209  Devon Tower                                    Oklahoma City    USA          257    844  50     2012
+209  Ciputra World Hotel Tower                      Jakarta          Indonesia    257    844  49     2013
+212  St. Petersburg Tower                           Moscow           Russia       257    843  65     2010
+213  Messeturm                                      Frankfurt        Germany      257    842  55     1990
+214  U.S. Steel Tower                               Pittsburgh       USA          256    841  64     1970
+214  Sorrento 1                                     Hong Kong        Hong Kong    256    841  75     2003
+216  The Harbour Hotel & Residence                  Dubai            UAE          256    840  59     2007
+216  Ubora Tower 1                                  Dubai            UAE          256    840  59     2007
+216  Hyperion Tower A                               Seoul            South Korea  256    840  69     2003
+216  Rinku Gate Tower Building                      Izumisano        Japan        256    840  56     1996
+220  New Century Plaza Tower A                      Nanjing          China        255    837  52     2006
+220  Langham Place Office Tower                     Hong Kong        Hong Kong    255    837  59     2004
+220  Tower Financial Center                         Panama City      Panama       255    837  53     2011
+220  Conrad Hotel                                   Dubai            UAE          255    837  51     2012
+224  The Imperial I                                 Mumbai           India        254    833  60     2009
+224  The Imperial II                                Mumbai           India        254    833  60     2009
+226  Capital Tower                                  Singapore        Singapore    253    830  52     2000
+226  Chase Tower                                    Indianapolis     USA          253    830  48     1990
+228  Highcliff                                      Hong Kong        Hong Kong    252    828  72     2003
+229  Bank of Shanghai Headquarters                  Shanghai         China        252    827  46     2005
+229  Osaka World Trade Center Building              Osaka            Japan        252    827  55     1995
+231  The Harbourside                                Hong Kong        Hong Kong    251    824  73     2003
+231  Rialto Towers                                  Melbourne        Australia    251    824  63     1986
+233  Jiali Plaza                                    Wuhan            China        251    823  61     1997
+234  The Gramercy Residences                        Makati           Philippines  250    820  73     2012
+234  Discovery Primea                               Makati           Philippines  250    820  68     2013
+234  The Gate Tower 1                               Abu Dhabi        UAE          250    820  65     2012
+234  The Gate Tower 2                               Abu Dhabi        UAE          250    820  65     2012
+234  The Gate Tower 3                               Abu Dhabi        UAE          250    820  65     2012
+234  Angsana Hotel Tower 1                          Dubai            UAE          250    820  49     2008
+234  Angsana Hotel Tower 2                          Dubai            UAE          250    820  49     2008
+234  Beijing Yintai Centre Tower 2                  Beijing          China        250    820  63     2007
+234  Chelsea Tower                                  Dubai            UAE          250    820  49     2005
+234  One Atlantic Center                            Atlanta          USA          250    820  50     1987
+234  Caja Madrid Tower                              Madrid           Spain        250    820  45     2008
+234  Wisma 46                                       Jakarta          Indonesia    250    820  48     1996
+234  Post & Telecommunication Hub                   Guangzhou        China        250    820  66     2003
+234  Ahmed Khoory Tower                             Dubai            UAE          250    820  60     2012
+248  The Legacy at Millennium Park                  Chicago          USA          250    819  73     2010
+248  International Hainan Airlines Plaza            Haikou           China        250    819  54     2012
+250  Infinity                                       Brisbane         Australia    249    817  81     2013
+250  Cathay Pacific Plaza 1                         Ordos            China        249    817  55     2012
+250  Cathay Pacific Plaza 2                         Ordos            China        249    817  55     2012
+250  Al Tayer Tower                                 Dubai            UAE          249    817  49     2009
+250  63 Building                                    Seoul            South Korea  249    817  60     1985
+250  Metapolis 101                                  Hwaseong City    South Korea  249    817  66     2010
+250  Central Park                                   Perth            Australia    249    817  52     1992
+250  Torre de Cristal                               Madrid           Spain        249    817  45     2008
+258  Midtown Tower                                  Tokyo            Japan        248    814  54     2007
+258  CitySpire Center                               New York City    USA          248    814  75     1987
+260  One Chase Manhattan Plaza                      New York City    USA          248    813  60     1960
+261  Midland Square                                 Nagoya           Japan        247    810  47     2007
+261  Metapolis 104                                  Hwaseong City    South Korea  247    810  66     2010
+261  State Tower                                    Bangkok          Thailand     247    810  68     2001
+264  Conde Nast Building                            New York City    USA          247    809  48     1999
+265  Kai Yuen World Center                          Shijiazhuang     China        246    808  53     2012
+265  MetLife Building                               New York City    USA          246    808  59     1963
+267  Stock Exchange Plaza                           Shenzhen         China        246    807  51     2012
+268  Bloomberg Tower                                New York City    USA          246    806  54     2005
+268  Qingdao International Trade Center 1           Qingdao          China        246    806  50     2012
+268  Qingdao International Trade Center 2           Qingdao          China        246    806  50     2012
+271  Federation of Korean Industries Head Office    Seoul            South Korea  245    805  50     2013
+272  AVIC Plaza                                     Shenzhen         China        245    804  52     2012
+272  JR Central Towers                              Nagoya           Japan        245    804  51     2007
+272  Oasis Beach Tower                              Dubai            UAE          245    804  51     2006
+272  Al Fattan Tower                                Dubai            UAE          245    804  51     2006
+272  Churchill Residency                            Dubai            UAE          245    804  59     2010
+272  One Raffles Quay                               Singapore        Singapore    245    804  59     2006
+272  The Sail @ Marina Bay                          Singapore        Singapore    245    804  59     2000
+279  Moshe Aviv Tower                               Tel Aviv         Israel       244    801  69     2003
+279  Varyap Meridian Grand Tower 1                  Istanbul         Turkey       244    801  61     2012
+279  AAM Tower                                      Dubai            UAE          244    801  46     2008
+282  BHP Billiton Tower                             Perth            Australia    244    800  46     2012
+283  Maybank Tower                                  Kuala Lumpur     Malaysia     243    799  50     1987
+284  Soul                                           Gold Coast       Australia    243    797  77     2011
+284  Soleil                                         Brisbane         Australia    243    797  74     2011
+284  The Tower                                      Dubai            UAE          243    797  54     2002
+284  R&F Centre                                     Guangzhou        China        243    797  54     2007
+284  Dalian Futures Square 1                        Dalian           China        243    797  53     2010
+284  Tokyo Metropolitan Government Building         Tokyo            Japan        243    797  48     1991
+284  Citigroup Centre                               Sydney           Australia    243    797  50     2000
+284  F&F Tower                                      Panama City      Panama       243    797  52     2011
+292  Dalian World Trade Centre                      Dalian           China        242    796  61     2000
+293  Federation West Tower                          Moscow           Russia       242    795  62     2007
+293  Pearl Tower                                    Panama City      Panama       242    795  70     2011
+295  Torre Waters                                   Panama City      Panama       242    794  75     2011
+296  IDS Tower                                      Minneapolis      USA          241    792  57     1973
+296  Mellon Bank Center                             Philadelphia     USA          241    792  54     1990
+296  Woolworth Building                             New York City    USA          241    792  57     1913
+299  World Trade Center Doha                        Doha             Qatar        241    791  51     2012
+299  Maxdo Centre                                   Shanghai         China        241    791  55     2002
+299  Bank of China Mansion                          Qingdao          China        241    791  54     1999
