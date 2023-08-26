@@ -140,7 +140,7 @@ echo 'mysql --host=$host --user=$user --password=$password -f < aurora-tickit-db
 chmod 700 run.sh
 ```
 
-<details>
+</details>
 
 Load TICKIT dataset into the aurora database
 
@@ -249,7 +249,7 @@ LOAD DATA FROM S3 PREFIX 's3://redshift-immersionday-labs/data/tickit/venue/' IN
 LOAD DATA FROM S3 PREFIX 's3://redshift-immersionday-labs/data/tickit/sales/' INTO TABLE demodb.sales FIELDS TERMINATED BY '|';
 ```
 
-<details>
+</details>
 
 Finally, from redshift edtior v2 run this query to get the integration id
 
@@ -265,7 +265,7 @@ CREATE DATABASE aurora_zeroetl FROM INTEGRATION '<result from above>';
 
 From here, we can query tabls synced with aurora
 
-![redshift aurora zero etl query](/assets/redshift-qurora-etl-zero-1.png)
+![Screenshot](./../assets/redshift-qurora-etl-zero-1.png)
 
 ## Reference
 
