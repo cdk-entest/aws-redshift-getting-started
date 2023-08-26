@@ -1,0 +1,8 @@
+**node_modules
+.env
+.vscode
+cdk.out
+test
+-version-reporting
+deploy.sh
+cdk.context.json
