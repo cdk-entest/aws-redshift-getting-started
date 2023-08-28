@@ -14,6 +14,9 @@ date: 01/03/2022
 - experiment with gelt_data
 - experiment with sql notebook and redshift ml
 
+> [!WARNING]  
+> Since Redshift created by CloudFormation template, please switch to the CF execution role to query, or use username and password to authenticate with Redshift Query Editor V2. Otherwise, will get permissions denied.
+
 ## Network Stack
 
 We need a VPC to host a Reshift cluster
