@@ -243,6 +243,49 @@ result: tuple = cusor.fetchall()
 print(result)
 ```
 
+## COPY TPCH Dataset
+
+This section check performance when loading TPCH 3TB from S3 to Amazon Redshift Serverless with 256 RPU. [HERE is notebook query](./notebook/TPCH-3TB.ipynb). Data size can be checked quickly by commands
+
+```bash
+aws s3 ls --summarize --human-readable --recursive s3://redshift-downloads/TPC-H/2.18/3TB/lineitem/
+```
+
+and
+
+```bash
+aws s3 ls --summarize --human-readable --recursive s3://redshift-downloads/TPC-H/2.18/3TB/customer/
+```
+
+and
+
+```sql
+select count(*) from customer;  -- 450000000 (450M) \
+select count(*) from lineitem;  -- 18000048306 (18B) \
+select count(*) from nation;  -- 25 \
+select count(*) from orders;  -- 4500000000 (4.5B) \
+select count(*) from part;  -- 600000000 (600M) \
+select count(*) from partsupp;  -- 2400000000 (2.4B) \
+select count(*) from region;  -- 5 \
+select count(*) from supplier;  -- 30000000 (30M)
+```
+
+Loaded time performance. So it takes about 700 seconds or 13 minutes to load the table line item which has 2.2TB data.
+
+![Screenshot](./assets/loaded-time-tpch-3tb-256-rpu.png)
+
+Loaded row performance
+![Screenshot](./assets/loaded-row-tpch-3tb-256-rpu.png)
+
+Loaded byte performance
+![Screenshot](./assets/loaded-byte-tpch-3tb-256-rpu.png)
+
+Some information about the TPCH dataset
+
+- [tpch-3tb](https://github.com/awslabs/amazon-redshift-utils/blob/master/src/CloudDataWarehouseBenchmark/Cloud-DWB-Derived-from-TPCH/3TB/ddl.sql)
+- [amazon redshift load sample data](https://docs.aws.amazon.com/redshift/latest/mgmt/query-editor-v2-loading.html)
+- [amazon redshift workshop schema](https://catalog.us-east-1.prod.workshops.aws/workshops/380e0b8a-5d4c-46e3-95a8-82d68cf5789a/en-US/gettingstarted/lab2)
+
 ## Explore Gdelt_data
 
 create a table
