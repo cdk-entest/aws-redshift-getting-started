@@ -37,7 +37,7 @@ export class RedshiftServerlessStack extends Stack {
       "RedshiftWorkGroup",
       {
         workgroupName: "demo",
-        baseCapacity: 32,
+        baseCapacity: 256,
         namespaceName: "demo",
         subnetIds: props.vpc.publicSubnets.map((subnet) => subnet.subnetId),
         publiclyAccessible: false,
