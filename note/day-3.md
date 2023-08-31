@@ -26,6 +26,8 @@ date: 28/07/2023
 
 > With manual WLM, Amazon Redshift configures one queue with a concurrency level of five, which enables up to five queries to run concurrently, plus one predefined Superuser queue, with a concurrency level of one. You can define up to eight queues. Each queue can be configured with a maximum concurrency level of 50. The maximum total concurrency level for all user-defined queues (not including the Superuser queue) is 50
 
+![Screenshot](./../assets/query_queue.png)
+
 1.  Some useful table when working with WML
 
 - [STV_WLM_SERVICE_CLASS_STATE](https://docs.aws.amazon.com/redshift/latest/dg/r_STV_WLM_SERVICE_CLASS_STATE.html)
@@ -179,7 +181,7 @@ WHERE l.listid < 40000;
 
 Query Groups versus User Group. So what happens if a query groupis specified in the query AND the user is in a user group? THE WLM Queue Assignment Rules assign the query to the first matching qeuue, based on the following diagram
 
-TODO: add diagram here
+![Screenshot](./../assets/query_queue_routing.png)
 
 The first queue (in order) that matches these rules will be used. This is why the order of the queues is important. Run the following query in the first tab. There are two queue match in this cases, and it match the first queue first (retail)
 
